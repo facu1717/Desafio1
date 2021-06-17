@@ -1,0 +1,6 @@
+C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\Entities\bin\Debug\Entities.dll
+C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\Entities\bin\Debug\Entities.pdb
+C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\Entities\obj\Debug\E.csproj.AssemblyReference.cache
+C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\Entities\obj\Debug\E.csproj.CoreCompileInputs.cache
+C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\Entities\obj\Debug\Entities.dll
+C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\Entities\obj\Debug\Entities.pdb

@@ -1,0 +1,5 @@
+C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
