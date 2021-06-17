@@ -15,7 +15,7 @@ namespace DataAccessLayer
         public List<Entities.Suscriptor> BuscarSuscriptor()
         {
             DataTable tabla = acceso.Leer("buscar_suscriptor", null);
-
+            DataTable tabla2 = new DataTable();
         }
     }
 }
