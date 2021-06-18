@@ -38,3 +38,7 @@ C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\Desafio\obj\De
 C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\Desafio\obj\Debug\Desafio.csproj.CopyComplete
 C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\Desafio\obj\Debug\Desafio.dll
 C:\Users\OficialDeSeguridad\Downloads\Desafio1-main\Desafio1-main\Desafio\obj\Debug\Desafio.pdb
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Desafio\obj\Debug\Desafio.csproj.AssemblyReference.cache
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Desafio\obj\Debug\Desafio.csproj.CoreCompileInputs.cache
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Desafio\obj\Debug\Desafio.dll
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Desafio\obj\Debug\Desafio.pdb

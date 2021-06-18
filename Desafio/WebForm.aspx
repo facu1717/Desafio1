@@ -28,14 +28,14 @@
                 <br />
                 <div class="col">
                     <asp:Label ID="Label1" runat="server" Text="Label">Tipo Documento</asp:Label><br />
-                    <asp:DropDownList runat="server" Height="19px" Width="133px"></asp:DropDownList>
+                    <asp:DropDownList ID="ComboBox" runat="server" Height="19px" Width="133px"></asp:DropDownList>
                 </div>
                 <div class="col">
                     <asp:Label ID="Label2" runat="server" Text="Label">Numero Documento</asp:Label><br />
                     <asp:TextBox ID="txt_numDoc" runat="server" Height="19px" Width="133px"></asp:TextBox>
                 </div>
                 <div class="col">
-                    <asp:Button ID="btn_buscar" runat="server" Text="Buscar" />
+                    <asp:Button ID="btn_buscar" runat="server" Text="Buscar" OnClick="btnBtnBuscar" />
                 </div>
             </div>
             <hr />
