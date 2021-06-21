@@ -12,15 +12,12 @@ namespace DataAccessLayer
 {
     public class CD_Suscriptor
     {
-        SqlConnection cnx;
+        SqlConnection cnx = new SqlConnection("Data Source=DESKTOP-K8CJ3KA;Initial Catalog=Desafio1;Integrated Security=True");
         Suscriptor suscriptor = new Suscriptor();
         AccesoDB MiConexi = new AccesoDB();
         SqlCommand cmd = new SqlCommand();
         bool vexito;
-        public ClientesDatos()
-        {
-            cnx = new SqlConnection(MiConexi.GetConex());
-        }
+        
         public bool NuevoSuscriptor(Suscriptor suscriptor)
         {
             cmd.Connection = cnx;
@@ -132,7 +129,7 @@ namespace DataAccessLayer
                     suscriptor.Nombre = Convert.ToString(dtr["Nombre"]);
                     suscriptor.Apellido = Convert.ToString(dtr["Apellido"]);
                     suscriptor.Direccion = Convert.ToString(dtr["Direccion"]);
-                    suscriptor.Telefono = Convert.ToInt32(dtr["Telefono"]);
+                    suscriptor.Telefono = (int)Convert.ToInt64(dtr["Telefono"]);
                     suscriptor.Email = Convert.ToString(dtr["Email"]);
                     suscriptor.NombreUsuario = Convert.ToString(dtr["NombreUsuario"]);
                     suscriptor.Password = Convert.ToString(dtr["Password"]);

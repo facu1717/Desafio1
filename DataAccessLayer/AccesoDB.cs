@@ -11,11 +11,10 @@ namespace DataAccessLayer
 {
     public class AccesoDB
     {
-
         public string GetConex()
         {
             string strConex = ConfigurationManager.ConnectionStrings["BD"].ConnectionString;
-            if (object.ReferenceEquals(strConex, string.Empty))
+            if (ReferenceEquals(strConex, string.Empty))
             {
                 return string.Empty;
             }
