@@ -14,6 +14,17 @@
         #btn_nuevo {background-color: #add9e6; color:white}
         #btn_modificar {background-color: #6c878f; color:white}
     </style>
+    <script>
+        function confirmar()
+        {
+            var opcion = confirm("¿Desea confirmar la nueva suscripcion?");
+            if (opcion == true) {
+                
+            } else {
+                mensaje = "Has clickado Cancelar";
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -87,12 +98,13 @@
                 </div>
                 <div>
                     <hr />
-                    <asp:Button ID="btn_aceptar" runat="server" Text="Aceptar" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" />
+                    <asp:Button ID="btn_aceptar" runat="server" Text="Aceptar" OnClick="btn_aceptar_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" />
+                    
                 </div>
             </div>
         </div>
-
+        
     </form>
 </body>
 </html>

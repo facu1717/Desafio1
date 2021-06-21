@@ -42,10 +42,6 @@ C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Desafio\obj\Debug\Desafi
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Desafio\obj\Debug\Desafio.csproj.CoreCompileInputs.cache
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Desafio\obj\Debug\Desafio.dll
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Desafio\obj\Debug\Desafio.pdb
-E:\Laburo\desafio1\Desafio\Desafio\obj\Debug\Desafio.csproj.AssemblyReference.cache
-E:\Laburo\desafio1\Desafio\Desafio\obj\Debug\Desafio.csproj.CoreCompileInputs.cache
-E:\Laburo\desafio1\Desafio\Desafio\obj\Debug\Desafio.dll
-E:\Laburo\desafio1\Desafio\Desafio\obj\Debug\Desafio.pdb
 E:\Laburo\desafio1\Desafio\Desafio\bin\Desafio.dll.config
 E:\Laburo\desafio1\Desafio\Desafio\bin\Desafio.dll
 E:\Laburo\desafio1\Desafio\Desafio\bin\Desafio.pdb
@@ -83,4 +79,8 @@ E:\Laburo\desafio1\Desafio\Desafio\bin\BusinessLogicLayer.pdb
 E:\Laburo\desafio1\Desafio\Desafio\bin\Entities.pdb
 E:\Laburo\desafio1\Desafio\Desafio\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\Laburo\desafio1\Desafio\Desafio\bin\DataAccessLayer.pdb
+E:\Laburo\desafio1\Desafio\Desafio\obj\Debug\Desafio.csproj.AssemblyReference.cache
+E:\Laburo\desafio1\Desafio\Desafio\obj\Debug\Desafio.csproj.CoreCompileInputs.cache
 E:\Laburo\desafio1\Desafio\Desafio\obj\Debug\Desafio.csproj.CopyComplete
+E:\Laburo\desafio1\Desafio\Desafio\obj\Debug\Desafio.dll
+E:\Laburo\desafio1\Desafio\Desafio\obj\Debug\Desafio.pdb

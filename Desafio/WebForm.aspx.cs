@@ -4,15 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows;
+using System.Windows.Forms;
 using BusinessLogicLayer;
 using Entities;
+
 
 namespace Desafio
 {
     public partial class WebForm : System.Web.UI.Page
     {
         NG_Suscriptor ng_Suscriptor = new NG_Suscriptor();
+        NG_Suscripcion ng_Suscripcion = new NG_Suscripcion();
         Suscriptor suscriptor = new Suscriptor(); 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -56,13 +58,21 @@ namespace Desafio
 
         private void CargarCampos()
         {
-            txt_nombre.Text = suscriptor.Nombre.ToString();
-            txt_apellido.Text = suscriptor.Apellido.ToString();
-            txt_direccion.Text = suscriptor.Direccion.ToString();
-            txt_email.Text = suscriptor.Email.ToString();
-            txt_telefono.Text = suscriptor.Telefono.ToString();
-            txt_usuario.Text = suscriptor.NombreUsuario.ToString();
-            txt_contraseña.Text = suscriptor.Password.ToString();
+            try
+            {
+                txt_nombre.Text = suscriptor.Nombre.ToString();
+                txt_apellido.Text = suscriptor.Apellido.ToString();
+                txt_direccion.Text = suscriptor.Direccion.ToString();
+                txt_email.Text = suscriptor.Email.ToString();
+                txt_telefono.Text = suscriptor.Telefono.ToString();
+                txt_usuario.Text = suscriptor.NombreUsuario.ToString();
+                txt_contraseña.Text = suscriptor.Password.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("No se encontro el suscriptor");
+            }
+            
         
         }
 
@@ -76,5 +86,24 @@ namespace Desafio
             txt_usuario.Text = "";
             txt_contraseña.Text = "";
         }
+
+        protected void btn_aceptar_Click(object sender, EventArgs e)
+        {
+            Suscripcion suscripcion = new Suscripcion();
+            DateTime fechaActual = DateTime.Now;
+            suscripcion.IdSuscriptor = suscriptor.IdSuscriptor;
+            suscripcion.FechaAlta = fechaActual;
+            ng_Suscripcion.Registrar_Suscripcion(suscripcion);
+
+        }
+
+            
+        public void aceptar() 
+        {
+            
+
+        }
+
+        
     }
 }

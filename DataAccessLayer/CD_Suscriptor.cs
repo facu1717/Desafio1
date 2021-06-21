@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Entities;
-
+using System.Windows;
 
 namespace DataAccessLayer
 {
@@ -126,10 +126,11 @@ namespace DataAccessLayer
                 if (dtr.HasRows == true)
                 {
                     dtr.Read();
+                    suscriptor.IdSuscriptor = Convert.ToInt32(dtr["IdSuscriptor"]);
                     suscriptor.Nombre = Convert.ToString(dtr["Nombre"]);
                     suscriptor.Apellido = Convert.ToString(dtr["Apellido"]);
                     suscriptor.Direccion = Convert.ToString(dtr["Direccion"]);
-                    suscriptor.Telefono = (int)Convert.ToInt64(dtr["Telefono"]);
+                    suscriptor.Telefono = Convert.ToInt64(dtr["Telefono"]);
                     suscriptor.Email = Convert.ToString(dtr["Email"]);
                     suscriptor.NombreUsuario = Convert.ToString(dtr["NombreUsuario"]);
                     suscriptor.Password = Convert.ToString(dtr["Password"]);
@@ -151,6 +152,7 @@ namespace DataAccessLayer
                 cmd.Parameters.Clear();
             }
         }
+        
     }
 
 }
