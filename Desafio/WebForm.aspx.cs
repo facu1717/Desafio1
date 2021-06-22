@@ -20,7 +20,7 @@ namespace Desafio
         bool vigente = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            solo_read();
             txt_oculto.Visible = false;
             if (!IsPostBack)
             {
@@ -94,7 +94,7 @@ namespace Desafio
             if (Estavigente() == false)
             {
                 Suscripcion suscripcion = new Suscripcion();
-                string fechaActual = DateTime.Now.ToString();
+                DateTime fechaActual = DateTime.Now;
                 suscriptor.IdSuscriptor = int.Parse(txt_oculto.Text);
                 suscripcion.IdSuscriptor = suscriptor.IdSuscriptor;
                 suscripcion.FechaAlta = fechaActual;
@@ -105,6 +105,7 @@ namespace Desafio
             else
             {
                 MessageBox.Show("No puede registrar una nueva suscripción, debido a que ya tiene una vigente");
+                Response.Redirect("WebForm.aspx");
             }
 
         }
@@ -115,7 +116,6 @@ namespace Desafio
             if (sus.FechaFin == "")
             {
                 vigente = true;
-                
             }
             
             return vigente;
@@ -129,7 +129,21 @@ namespace Desafio
             return suscriptor;
         }
 
+        protected void btn_nuevo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Nuevo.aspx");
+        }
 
+        private void solo_read()
+        {
+            txt_apellido.ReadOnly = true;
+            txt_nombre.ReadOnly = true;
+            txt_telefono.ReadOnly = true;
+            txt_contraseña.ReadOnly = true;
+            txt_email.ReadOnly = true;
+            txt_direccion.ReadOnly = true;
+            txt_usuario.ReadOnly = true;
+        }
 
     }
 }

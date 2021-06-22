@@ -13,7 +13,11 @@ namespace DataAccessLayer
     {
         SqlCommand cmd = new SqlCommand();
         Suscripcion suscripcion = new Suscripcion();
-        SqlConnection cnx = new SqlConnection("Data Source=10.100.100.102\\SQLSERVER2008;User ID=pasantes;Password=sqladmin");
+        //SqlConnection cnx = new SqlConnection("Data Source=10.100.100.102\\SQLSERVER2008;User ID=pasantes;Password=sqladmin");
+        SqlConnection cnx = new SqlConnection("Data Source=DESKTOP-K8CJ3KA;Initial Catalog=Desafio1;Integrated Security=True");
+
+        public bool IsDBNull { get; private set; }
+
         public void Registrar_Suscripcion(Suscripcion suscripcion)
         {
             try
@@ -60,10 +64,10 @@ namespace DataAccessLayer
                     dtr.Read();
                     suscripcion.IdAsociacion = Convert.ToInt32(dtr["IdAsociación"]);
                     suscripcion.IdSuscriptor = Convert.ToInt32(dtr["IdSuscriptor"]);
-                    suscripcion.FechaAlta = Convert.ToString(dtr["FechaAlta"]);
-                    suscripcion.FechaFin = Convert.ToString(dtr["FechaFin"]);
+                    suscripcion.FechaAlta = Convert.ToDateTime(dtr["FechaAlta"]);
+                    suscripcion.FechaFin = Convert.ToString(dtr["FechaFin"]); 
                     suscripcion.MotivoFin = Convert.ToString(dtr["MotivoFin"]);
-
+                    
                 }
                 cnx.Close();
                 cmd.Parameters.Clear();

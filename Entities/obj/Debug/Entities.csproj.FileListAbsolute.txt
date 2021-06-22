@@ -14,3 +14,4 @@ C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Entities\obj\Debug\Entit
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Entities\obj\Debug\Entities.dll
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Entities\obj\Debug\Entities.pdb
+E:\Laburo\desafio1\Desafio\Entities\obj\Debug\Entities.csproj.AssemblyReference.cache

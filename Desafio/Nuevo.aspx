@@ -1,8 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm.aspx.cs" Inherits="Desafio.WebForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Nuevo.aspx.cs" Inherits="Desafio.Nuevo" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -13,7 +14,6 @@
         #btn_cancelar {background-color: white}
         #btn_nuevo {background-color: #add9e6; color:white}
         #btn_modificar {background-color: #6c878f; color:white}
-        .readOnly {background-color:#d9d9d9}
     </style>
     
 </head>
@@ -37,7 +37,7 @@
                     <asp:TextBox ID="txt_numDoc" runat="server" Height="19px" Width="133px"></asp:TextBox>
                 </div>
                 <div class="col">
-                    <asp:Button  ID="btn_buscar" runat="server" Text="Buscar" OnClick="btnBtnBuscar" />
+                    <asp:Button ID="btn_buscar" runat="server" Text="Buscar" OnClick="btnBtnBuscar" />
                 </div>
             </div>
             <hr />
@@ -46,24 +46,24 @@
                 <br />
                 <div class="col">
                     <asp:Label ID="Label3" runat="server" Text="Label">Nombre</asp:Label><br />
-                    <asp:TextBox class ="readOnly" ID="txt_nombre" runat="server" Height="19px" Width="133px"></asp:TextBox>
+                    <asp:TextBox ID="txt_nombre" runat="server" Height="19px" Width="133px"></asp:TextBox>
                 </div>
                 <div class="col">
                     <asp:Label ID="Label4" runat="server" Text="Label">Apellido</asp:Label><br />
-                    <asp:TextBox class ="readOnly" ID="txt_apellido" runat="server" Height="19px" Width="133px"></asp:TextBox>
+                    <asp:TextBox ID="txt_apellido" runat="server" Height="19px" Width="133px"></asp:TextBox>
                 </div>
                 <div class="col">
-                    <asp:Button ID="btn_nuevo" runat="server" Text="Nuevo" OnClick="btn_nuevo_Click" />
+                    <asp:Button ID="btn_nuevo" runat="server" Text="Nuevo" />
                 </div>
             </div>
             <div class="row align-items-end">
                 <div class="col">
                     <asp:Label ID="Label5" runat="server" Text="Label">Dirección</asp:Label><br />
-                    <asp:TextBox class ="readOnly" ID="txt_direccion" runat="server" Height="19px" Width="133px"></asp:TextBox>
+                    <asp:TextBox ID="txt_direccion" runat="server" Height="19px" Width="133px"></asp:TextBox>
                 </div>
                 <div class="col">
                     <asp:Label ID="Label6" runat="server" Text="Label">Email</asp:Label><br />
-                    <asp:TextBox class ="readOnly" ID="txt_email" runat="server" Height="19px" Width="133px"></asp:TextBox>
+                    <asp:TextBox ID="txt_email" runat="server" Height="19px" Width="133px"></asp:TextBox>
                 </div>
                 <div class="col">
                     <asp:Button ID="btn_modificar" runat="server" Text="Modificar" />
@@ -72,18 +72,18 @@
             <div class="row align-items-end">
                 <div class="col">
                     <asp:Label ID="Label7" runat="server" Text="Label">Telefono</asp:Label><br />
-                    <asp:TextBox class ="readOnly" ID="txt_telefono" runat="server" Height="19px" Width="133px"></asp:TextBox>
+                    <asp:TextBox ID="txt_telefono" runat="server" Height="19px" Width="133px"></asp:TextBox>
                 </div>
             </div>
             <hr />
             <div class="row align-items-end">
                 <div class="col">
                     <asp:Label ID="Label8" runat="server" Text="Label">Nombre de Usuario</asp:Label><br />
-                    <asp:TextBox class ="readOnly" ID="txt_usuario" runat="server" Height="19px" Width="133px"></asp:TextBox>
+                    <asp:TextBox ID="txt_usuario" runat="server" Height="19px" Width="133px"></asp:TextBox>
                 </div>
                 <div class="col">
                     <asp:Label ID="Label9" runat="server" Text="Label">Contraseña</asp:Label><br />
-                    <asp:TextBox class ="readOnly" ID="txt_contraseña" runat="server" Height="19px" Width="133px" type ="password"></asp:TextBox>
+                    <asp:TextBox ID="txt_contraseña" runat="server" Height="19px" Width="133px" type ="password"></asp:TextBox>
                     <asp:TextBox ID="txt_oculto" runat="server"></asp:TextBox>
                 </div>
                 <div class="col">
@@ -91,7 +91,7 @@
                 <div>
                     <hr />
                     <asp:Button ID="btn_aceptar" runat="server" Text="Aceptar" OnClick="btn_aceptar_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" />
+                    <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" OnClick="btn_cancelar_Click" />
                     
                 </div>
             </div>
