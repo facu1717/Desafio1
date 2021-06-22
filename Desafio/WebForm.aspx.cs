@@ -47,13 +47,7 @@ namespace Desafio
                 CargarCampos();
                 
             }
-
-            else
-            {
-                LimpiarCampos();
-                MessageBox.Show("ERROR: No se encontro Numero de Documento");
-            }
-
+            
         }
 
         private void CargarCampos()
@@ -122,11 +116,20 @@ namespace Desafio
         }
         private Suscriptor buscar()
         {
-            int TipoDocumento = Convert.ToInt32(ComboBox.SelectedItem.Value);
-            long NumeroDocumento = long.Parse(txt_numDoc.Text);
+            if(String.IsNullOrEmpty(txt_numDoc.Text) == false )
+            {
+                int TipoDocumento = Convert.ToInt32(ComboBox.SelectedItem.Value);
+                long NumeroDocumento = long.Parse(txt_numDoc.Text);
 
-            suscriptor = ng_Suscriptor.Buscar_Suscriptor(TipoDocumento, NumeroDocumento);
-            return suscriptor;
+                suscriptor = ng_Suscriptor.Buscar_Suscriptor(TipoDocumento, NumeroDocumento);
+                return suscriptor;
+            }
+            else
+            {
+                MessageBox.Show("Coloque su numero de documento");
+                return null;
+            }
+            
         }
 
         protected void btn_nuevo_Click(object sender, EventArgs e)
