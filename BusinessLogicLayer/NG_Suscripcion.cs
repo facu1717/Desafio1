@@ -15,5 +15,9 @@ namespace BusinessLogicLayer
         {
             cd_Suscripcion.Registrar_Suscripcion(sus);
         }
-    }
+        public Suscripcion Validar_suscripcion(int id_suscriptor)
+        {
+            return cd_Suscripcion.validar_suscripcion(id_suscriptor);
+        }
+    }   
 }

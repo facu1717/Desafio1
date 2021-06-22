@@ -10,8 +10,8 @@ namespace Entities
     {
         public int IdAsociacion { get; set; }
         public int IdSuscriptor { get; set; }
-        public DateTime FechaAlta { get; set; }
-        public DateTime FechaFin { get; set; }
+        public string FechaAlta { get; set; }
+        public string FechaFin { get; set; }
         public string MotivoFin { get; set; }
 
     }

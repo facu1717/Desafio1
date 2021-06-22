@@ -93,6 +93,7 @@
                 <div class="col">
                     <asp:Label ID="Label9" runat="server" Text="Label">Contraseña</asp:Label><br />
                     <asp:TextBox ID="txt_contraseña" runat="server" Height="19px" Width="133px"></asp:TextBox>
+                    <asp:TextBox ID="txt_oculto" runat="server"></asp:TextBox>
                 </div>
                 <div class="col">
                 </div>
