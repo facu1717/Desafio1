@@ -6,8 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogicLayer;
 using Entities;
-using System.Windows.Forms;
-
+using Encode.Funciones;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Desafio
 {
@@ -17,6 +18,7 @@ namespace Desafio
         NG_Suscripcion ng_Suscripcion = new NG_Suscripcion();
         Suscriptor suscriptor = new Suscriptor();
         Suscripcion sus = new Suscripcion();
+        string stKey = "jekabc%*.";
         protected void Page_Load(object sender, EventArgs e)
         {
             txt_oculto.Visible = false;
@@ -62,16 +64,18 @@ namespace Desafio
                 suscriptor.NumeroDocumento = Convert.ToInt32(txt_numDoc.Text);
                 suscriptor.TipoDocumento = Convert.ToInt32(ComboBox.SelectedValue);
 
+                //suscriptor.Password = EncriptarPassword(suscriptor.Password, stKey);
+
                 ng_Suscriptor.Nuevo_Suscriptor(suscriptor);
-                MessageBox.Show("Se ha creado un nuevo suscriptor");
-                Response.Redirect("WebForm.aspx");
+                MessageBox.Show("Se ha creado un nuevo suscriptor","success");
+                
 
             }
             else
             {
                 return;
             }
-            CargarCampos();
+            
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
@@ -98,26 +102,70 @@ namespace Desafio
                 return true;
             }
         }
-        private void CargarCampos()
+       
+        public static string DesencriptarPassword(string Password, string stKey)
+        {
+
+            try
+            {
+                TripleDESCryptoServiceProvider des;
+                MD5CryptoServiceProvider hashmd5;
+
+                byte[] keyhash, buff;
+                string stringDecripted;
+
+                hashmd5 = new MD5CryptoServiceProvider();
+                keyhash = hashmd5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(stKey));
+
+                hashmd5 = null;
+                des = new TripleDESCryptoServiceProvider();
+
+                des.Key = keyhash;
+                des.Mode = CipherMode.ECB;
+
+                buff = Convert.FromBase64String(Password);
+                stringDecripted = ASCIIEncoding.ASCII.GetString(des.CreateDecryptor().TransformFinalBlock(buff, 0, buff.Length));
+
+
+                return stringDecripted;
+
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+        public static string EncriptarPassword(string Password, string stKey)
         {
             try
             {
-                txt_oculto.Text = suscriptor.IdSuscriptor.ToString();
-                txt_nombre.Text = suscriptor.Nombre.ToString();
-                txt_apellido.Text = suscriptor.Apellido.ToString();
-                txt_direccion.Text = suscriptor.Direccion.ToString();
-                txt_email.Text = suscriptor.Email.ToString();
-                txt_telefono.Text = suscriptor.Telefono.ToString();
-                txt_usuario.Text = suscriptor.NombreUsuario.ToString();
-                txt_contraseña.Text = suscriptor.Password.ToString();
+                TripleDESCryptoServiceProvider des;
+                MD5CryptoServiceProvider hashmd5;
+
+                byte[] keyhash, buff;
+                string stringEncripted;
+
+                hashmd5 = new MD5CryptoServiceProvider();
+                keyhash = hashmd5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(stKey));
+
+                hashmd5 = null;
+                des = new TripleDESCryptoServiceProvider();
+
+                des.Key = keyhash;
+                des.Mode = CipherMode.ECB;
+
+                buff = ASCIIEncoding.ASCII.GetBytes(Password);
+                stringEncripted = Convert.ToBase64String(des.CreateDecryptor().TransformFinalBlock(buff, 0, buff.Length));
+
+
+                return stringEncripted;
 
             }
-            catch
+            catch (Exception exception)
             {
-                MessageBox.Show("No se encontro el suscriptor");
+                throw exception;
             }
-
-
         }
     }
 }

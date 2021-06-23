@@ -15,6 +15,9 @@
         #btn_nuevo {background-color: #add9e6; color:white}
         #btn_modificar {background-color: #6c878f; color:white}
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css"/>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     
 </head>
 <body>

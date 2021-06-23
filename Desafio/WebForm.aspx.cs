@@ -7,7 +7,8 @@ using System.Web.UI.WebControls;
 using Encode.Funciones;
 using BusinessLogicLayer;
 using Entities;
-
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Desafio
 {
@@ -18,12 +19,13 @@ namespace Desafio
         Suscriptor suscriptor = new Suscriptor();
         Suscripcion sus = new Suscripcion();
         bool vigente = false;
-
+        string stKey = "ABCabc123*-";
         protected void Page_Load(object sender, EventArgs e)
         {
             solo_read();
             txt_oculto.Visible = false;
             txt_modificar.Visible = false;
+
             if (!IsPostBack)
             {
 
@@ -93,31 +95,14 @@ namespace Desafio
             {
                 if (Estavigente() == false)
                 {
+
+                    MessageBox.ShowConfirmation("Estas seguro que desea registrar una nueva suscripcion?", "Atencion", "Aceptar", "Cancelar", "$('#" + btn_confirmar_guardado.ClientID +"').click();");
                     
-
-                    if ()
-                    {
-                        Suscriptor suscriptorNuevo = new Suscriptor();
-                        Suscripcion suscripcion = new Suscripcion();
-                        DateTime fechaActual = DateTime.Now;
-                        suscriptorNuevo.IdSuscriptor = int.Parse(txt_oculto.Text);
-                        suscripcion.IdSuscriptor = suscriptorNuevo.IdSuscriptor;
-                        suscripcion.FechaAlta = fechaActual;
-                        ng_Suscripcion.Registrar_Suscripcion(suscripcion);
-                        MessageBox.Show("¡Se registro la suscripción correctamente!","success","Bien hecho");   
-                        Response.Redirect("WebForm.aspx");
-                    }
-                    else
-                    {
-
-                        Response.Redirect("WebForm.aspx");
-                    }
-
                 }
                 else
                 {
                     MessageBox.Show("No puede registrar una nueva suscripción, debido a que ya tiene una vigente");
-                    Response.Redirect("WebForm.aspx");
+                    
                 }
             }
             else
@@ -138,6 +123,8 @@ namespace Desafio
                     suscriptor.NumeroDocumento = Convert.ToInt32(txt_numDoc.Text);
                     suscriptor.TipoDocumento = Convert.ToInt32(ComboBox.SelectedValue);
 
+                    suscriptor.Password = EncriptarPassword(suscriptor.Password,stKey);
+
                     ng_Suscriptor.Actualizar_Suscriptor(suscriptor);
                     MessageBox.Show("Se ha modificado correctamente el suscriptor");
                     Response.Redirect("WebForm.aspx");
@@ -152,6 +139,7 @@ namespace Desafio
 
 
         }
+        
         private bool Estavigente()
         {
             Suscriptor suscriptor = buscar();
@@ -243,5 +231,95 @@ namespace Desafio
         {
             txt_modificar.Text = "modificar";
         }
+
+        public static string DesencriptarPassword(string Password, string stKey)
+        {
+            
+
+            try
+            {
+                TripleDESCryptoServiceProvider des;
+                MD5CryptoServiceProvider hashmd5;
+
+                byte[] keyhash, buff;
+                string stringDecripted;
+
+                hashmd5 = new MD5CryptoServiceProvider();
+                keyhash = hashmd5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(stKey));
+
+                hashmd5 = null;
+                des = new TripleDESCryptoServiceProvider();
+
+                des.Key = keyhash;
+                des.Mode = CipherMode.ECB;
+
+                buff = Convert.FromBase64String(Password);
+                stringDecripted = ASCIIEncoding.ASCII.GetString(des.CreateDecryptor().TransformFinalBlock(buff, 0, buff.Length));
+
+
+                return stringDecripted;
+
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+        public static string EncriptarPassword(string Password, string stKey)
+        {
+            
+
+            try
+            {
+                TripleDESCryptoServiceProvider des;
+                MD5CryptoServiceProvider hashmd5;
+
+                byte[] keyhash, buff;
+                string stringEncripted;
+
+                hashmd5 = new MD5CryptoServiceProvider();
+                keyhash = hashmd5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(stKey));
+
+                hashmd5 = null;
+                des = new TripleDESCryptoServiceProvider();
+
+                des.Key = keyhash;
+                des.Mode = CipherMode.ECB;
+
+                buff = ASCIIEncoding.ASCII.GetBytes(Password);
+                stringEncripted = Convert.ToBase64String(des.CreateDecryptor().TransformFinalBlock(buff, 0, buff.Length));
+
+
+                return stringEncripted;
+
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+        protected void btn_confirmar_guardado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Suscriptor suscriptorNuevo = new Suscriptor();
+                Suscripcion suscripcion = new Suscripcion();
+                DateTime fechaActual = DateTime.Now;
+                suscriptorNuevo.IdSuscriptor = int.Parse(txt_oculto.Text);
+                suscripcion.IdSuscriptor = suscriptorNuevo.IdSuscriptor;
+                suscripcion.FechaAlta = fechaActual;
+                ng_Suscripcion.Registrar_Suscripcion(suscripcion);
+                MessageBox.Show("¡Se registro la suscripción correctamente!", "success", "Bien hecho");
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", "Ocurrio un error");
+
+            }
+        }
     }
+
 }

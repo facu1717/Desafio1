@@ -13,9 +13,11 @@
         #btn_cancelar {background-color: white}
         #btn_nuevo {background-color: #add9e6; color:white}
         #btn_modificar {background-color: #6c878f; color:white}
-       
     </style>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css"/>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -93,7 +95,7 @@
                     <hr />
                     <asp:Button ID="btn_aceptar" runat="server" Text="Aceptar" OnClick="btn_aceptar_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" />
-                    
+                    <asp:Button ID="btn_confirmar_guardado" runat="server" Style="display: none;" OnClick = "btn_confirmar_guardado_Click"/>
                 </div>
             </div>
         </div>
