@@ -58,7 +58,7 @@ namespace Desafio
                 suscriptor.Email = txt_email.Text;
                 suscriptor.NombreUsuario = txt_usuario.Text;
                 suscriptor.Password = txt_contraseña.Text;
-                suscriptor.Telefono = Convert.ToInt32(txt_telefono.Text);
+                suscriptor.Telefono = Convert.ToString(txt_telefono.Text);
                 suscriptor.NumeroDocumento = Convert.ToInt32(txt_numDoc.Text);
                 suscriptor.TipoDocumento = Convert.ToInt32(ComboBox.SelectedValue);
 

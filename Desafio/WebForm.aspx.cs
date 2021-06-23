@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
+using Encode.Funciones;
 using BusinessLogicLayer;
 using Entities;
 
@@ -18,7 +18,7 @@ namespace Desafio
         Suscriptor suscriptor = new Suscriptor();
         Suscripcion sus = new Suscripcion();
         bool vigente = false;
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             solo_read();
@@ -44,12 +44,13 @@ namespace Desafio
 
         protected void btnBtnBuscar(object sender, EventArgs e)
         {
+
             if (buscar() != null)
             {
                 CargarCampos();
-                
+
             }
-            
+
         }
 
         private void CargarCampos()
@@ -87,18 +88,31 @@ namespace Desafio
 
         protected void btn_aceptar_Click(object sender, EventArgs e)
         {
-            if(String.IsNullOrEmpty(txt_modificar.Text) == true)
+
+            if (String.IsNullOrEmpty(txt_modificar.Text) == true)
             {
                 if (Estavigente() == false)
                 {
-                    Suscripcion suscripcion = new Suscripcion();
-                    DateTime fechaActual = DateTime.Now;
-                    suscriptor.IdSuscriptor = int.Parse(txt_oculto.Text);
-                    suscripcion.IdSuscriptor = suscriptor.IdSuscriptor;
-                    suscripcion.FechaAlta = fechaActual;
-                    ng_Suscripcion.Registrar_Suscripcion(suscripcion);
-                    MessageBox.Show("¡Se registro la suscripción correctamente!");
-                    Response.Redirect("WebForm.aspx");
+                    
+
+                    if ()
+                    {
+                        Suscriptor suscriptorNuevo = new Suscriptor();
+                        Suscripcion suscripcion = new Suscripcion();
+                        DateTime fechaActual = DateTime.Now;
+                        suscriptorNuevo.IdSuscriptor = int.Parse(txt_oculto.Text);
+                        suscripcion.IdSuscriptor = suscriptorNuevo.IdSuscriptor;
+                        suscripcion.FechaAlta = fechaActual;
+                        ng_Suscripcion.Registrar_Suscripcion(suscripcion);
+                        MessageBox.Show("¡Se registro la suscripción correctamente!","success","Bien hecho");   
+                        Response.Redirect("WebForm.aspx");
+                    }
+                    else
+                    {
+
+                        Response.Redirect("WebForm.aspx");
+                    }
+
                 }
                 else
                 {
@@ -110,7 +124,7 @@ namespace Desafio
             {
                 bool Resultado;
                 Suscriptor suscriptor = new Suscriptor();
-                Resultado = validarDatos(suscriptor);
+                Resultado = validarDatos();
 
                 if (Resultado == true)
                 {
@@ -120,7 +134,7 @@ namespace Desafio
                     suscriptor.Email = txt_email.Text;
                     suscriptor.NombreUsuario = txt_usuario.Text;
                     suscriptor.Password = txt_contraseña.Text;
-                    suscriptor.Telefono = Convert.ToInt64(txt_telefono.Text);
+                    suscriptor.Telefono = Convert.ToString(txt_telefono.Text);
                     suscriptor.NumeroDocumento = Convert.ToInt32(txt_numDoc.Text);
                     suscriptor.TipoDocumento = Convert.ToInt32(ComboBox.SelectedValue);
 
@@ -133,9 +147,9 @@ namespace Desafio
                     MessageBox.Show("No se pudo modificar el suscriptor");
                     Response.Redirect("WebForm.aspx");
                 }
-                
+
             }
-            
+
 
         }
         private bool Estavigente()
@@ -146,12 +160,12 @@ namespace Desafio
             {
                 vigente = true;
             }
-            
+
             return vigente;
         }
         private Suscriptor buscar()
         {
-            if(String.IsNullOrEmpty(txt_numDoc.Text) == false )
+            if (String.IsNullOrEmpty(txt_numDoc.Text) == false)
             {
                 int TipoDocumento = Convert.ToInt32(ComboBox.SelectedItem.Value);
                 long NumeroDocumento = long.Parse(txt_numDoc.Text);
@@ -164,7 +178,7 @@ namespace Desafio
                 MessageBox.Show("Coloque su numero de documento");
                 return null;
             }
-            
+
         }
 
         protected void btn_nuevo_Click(object sender, EventArgs e)
@@ -174,24 +188,24 @@ namespace Desafio
 
         private void solo_read()
         {
-            txt_apellido.ReadOnly = true;
-            txt_nombre.ReadOnly = true;
-            txt_telefono.ReadOnly = true;
-            txt_contraseña.ReadOnly = true;
-            txt_email.ReadOnly = true;
-            txt_direccion.ReadOnly = true;
-            txt_usuario.ReadOnly = true;
+            txt_apellido.Enabled = false;
+            txt_nombre.Enabled = false;
+            txt_telefono.Enabled = false;
+            txt_contraseña.Enabled = false;
+            txt_email.Enabled = false;
+            txt_direccion.Enabled = false;
+            txt_usuario.Enabled = false;
         }
 
         private void habilitar_campos()
         {
-            txt_apellido.ReadOnly = false;
-            txt_nombre.ReadOnly = false;
-            txt_telefono.ReadOnly = false;
-            txt_contraseña.ReadOnly = false;
-            txt_email.ReadOnly = false;
-            txt_direccion.ReadOnly = false;
-            txt_usuario.ReadOnly = false;
+            txt_apellido.Enabled = true;
+            txt_nombre.Enabled = true;
+            txt_telefono.Enabled = true;
+            txt_contraseña.Enabled = true;
+            txt_email.Enabled = true;
+            txt_direccion.Enabled = true;
+            txt_usuario.Enabled = true;
         }
         protected void btn_modificar_Click(object sender, EventArgs e)
         {
@@ -204,9 +218,9 @@ namespace Desafio
             {
                 MessageBox.Show("Debe buscar el suscriptor antes de poder modificar");
             }
-            
+
         }
-        private bool validarDatos(Suscriptor suscriptor)
+        private bool validarDatos()
         {
             if (String.IsNullOrEmpty(txt_nombre.Text) == true ||
             String.IsNullOrEmpty(txt_apellido.Text) == true ||

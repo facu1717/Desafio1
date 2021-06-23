@@ -13,8 +13,8 @@ namespace DataAccessLayer
     {
         SqlCommand cmd = new SqlCommand();
         Suscripcion suscripcion = new Suscripcion();
-        //SqlConnection cnx = new SqlConnection("Data Source=10.100.100.102\\SQLSERVER2008;User ID=pasantes;Password=sqladmin");
-        SqlConnection cnx = new SqlConnection("Data Source=DESKTOP-K8CJ3KA;Initial Catalog=Desafio1;Integrated Security=True");
+        SqlConnection cnx = new SqlConnection("Data Source=10.100.100.102\\SQLSERVER2008;User ID=pasantes;Password=sqladmin");
+        //SqlConnection cnx = new SqlConnection("Data Source=DESKTOP-K8CJ3KA;Initial Catalog=Desafio1;Integrated Security=True");
 
         public bool IsDBNull { get; private set; }
 
@@ -23,7 +23,7 @@ namespace DataAccessLayer
             try
             {
                 cnx.Open();
-                string query = "insert into Suscripcion (IdSuscriptor,FechaAlta) values ('" + suscripcion.IdSuscriptor + "','" + suscripcion.FechaAlta + "')";
+                string query = "insert into Suscripcion1 (IdSuscriptor,FechaAlta) values ('" + suscripcion.IdSuscriptor + "','" + suscripcion.FechaAlta + "')";
                 SqlCommand sqlCommand = new SqlCommand(query, cnx);
                 sqlCommand.ExecuteNonQuery();
                 cnx.Close();
@@ -49,7 +49,7 @@ namespace DataAccessLayer
                 SqlDataReader dtr;
                 cmd.Connection = cnx;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "proc_ExisteSuscripcion";
+                cmd.CommandText = "proc_ExisteSuscripcion1";
                 cmd.Parameters.Add(new SqlParameter("@IdSuscriptor", SqlDbType.Int));
                 cmd.Parameters["@IdSuscriptor"].Value = id_suscriptor;
 
@@ -62,7 +62,7 @@ namespace DataAccessLayer
                 if (dtr.HasRows == true)
                 {
                     dtr.Read();
-                    suscripcion.IdAsociacion = Convert.ToInt32(dtr["IdAsociación"]);
+                    suscripcion.IdAsociacion = Convert.ToInt32(dtr["IdAsociacion"]);
                     suscripcion.IdSuscriptor = Convert.ToInt32(dtr["IdSuscriptor"]);
                     suscripcion.FechaAlta = Convert.ToDateTime(dtr["FechaAlta"]);
                     suscripcion.FechaFin = Convert.ToString(dtr["FechaFin"]); 

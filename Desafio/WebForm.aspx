@@ -13,7 +13,7 @@
         #btn_cancelar {background-color: white}
         #btn_nuevo {background-color: #add9e6; color:white}
         #btn_modificar {background-color: #6c878f; color:white}
-        .readOnly {background-color:#d9d9d9}
+       
     </style>
     
 </head>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col">
                     <asp:Label ID="Label4" runat="server" Text="Label">Apellido</asp:Label><br />
-                    <asp:TextBox class ="readOnly" ID="txt_apellido" runat="server" Height="19px" Width="133px"></asp:TextBox>
+                    <asp:TextBox ID="txt_apellido" runat="server" Height="19px" Width="133px"></asp:TextBox>
                 </div>
                 <div class="col">
                     <asp:Button ID="btn_nuevo" runat="server" Text="Nuevo" OnClick="btn_nuevo_Click" />

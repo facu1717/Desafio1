@@ -108,6 +108,7 @@
       <DependentUpon>Nuevo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\MessageBox.cs" />
     <Compile Include="WebForm.aspx.cs">
       <DependentUpon>WebForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -12,8 +12,8 @@ namespace DataAccessLayer
 {
     public class CD_Suscriptor
     {
-        SqlConnection cnx = new SqlConnection("Data Source=DESKTOP-K8CJ3KA;Initial Catalog=Desafio1;Integrated Security=True");
-        //SqlConnection cnx = new SqlConnection("Data Source=10.100.100.102\\SQLSERVER2008;User ID=pasantes;Password=sqladmin");
+        //SqlConnection cnx = new SqlConnection("Data Source=DESKTOP-K8CJ3KA;Initial Catalog=Desafio1;Integrated Security=True");
+        SqlConnection cnx = new SqlConnection("Data Source=10.100.100.102\\SQLSERVER2008;User ID=pasantes;Password=sqladmin");
         Suscriptor suscriptor = new Suscriptor();
         AccesoDB MiConexi = new AccesoDB();
         SqlCommand cmd = new SqlCommand();
@@ -36,7 +36,7 @@ namespace DataAccessLayer
                 cmd.Parameters["@tipoDoc"].Value = suscriptor.TipoDocumento;
                 cmd.Parameters.Add(new SqlParameter("@dir", SqlDbType.VarChar, 50));
                 cmd.Parameters["@dir"].Value = suscriptor.Direccion;
-                cmd.Parameters.Add(new SqlParameter("@tel", SqlDbType.Int));
+                cmd.Parameters.Add(new SqlParameter("@tel", SqlDbType.VarChar,50));
                 cmd.Parameters["@tel"].Value = suscriptor.Telefono;
                 cmd.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar, 50));
                 cmd.Parameters["@email"].Value = suscriptor.Email;
@@ -131,7 +131,7 @@ namespace DataAccessLayer
                     suscriptor.Nombre = Convert.ToString(dtr["Nombre"]);
                     suscriptor.Apellido = Convert.ToString(dtr["Apellido"]);
                     suscriptor.Direccion = Convert.ToString(dtr["Direccion"]);
-                    suscriptor.Telefono = Convert.ToInt64(dtr["Telefono"]);
+                    suscriptor.Telefono = Convert.ToString(dtr["Telefono"]);
                     suscriptor.Email = Convert.ToString(dtr["Email"]);
                     suscriptor.NombreUsuario = Convert.ToString(dtr["NombreUsuario"]);
                     suscriptor.Password = Convert.ToString(dtr["Password"]);
