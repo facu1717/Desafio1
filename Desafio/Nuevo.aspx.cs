@@ -48,10 +48,9 @@ namespace Desafio
         {
             bool Resultado;
             Suscriptor suscriptor = new Suscriptor();
-            suscriptor.IdSuscriptor = Convert.ToInt32(txt_oculto.Text);
             Resultado = validarDatos(suscriptor);
-            
-            if(Resultado == true)
+
+            if (Resultado == true)
             {
                 suscriptor.Nombre = txt_nombre.Text;
                 suscriptor.Apellido = txt_apellido.Text;
@@ -66,7 +65,7 @@ namespace Desafio
                 ng_Suscriptor.Nuevo_Suscriptor(suscriptor);
                 MessageBox.Show("Se ha creado un nuevo suscriptor");
                 Response.Redirect("WebForm.aspx");
-                
+
             }
             else
             {
@@ -77,19 +76,19 @@ namespace Desafio
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private bool validarDatos(Suscriptor suscriptor)
         {
-            if(String.IsNullOrEmpty(txt_nombre.Text) == true ||
+            if (String.IsNullOrEmpty(txt_nombre.Text) == true ||
             String.IsNullOrEmpty(txt_apellido.Text) == true ||
             String.IsNullOrEmpty(txt_telefono.Text) == true ||
             String.IsNullOrEmpty(txt_email.Text) == true ||
             String.IsNullOrEmpty(txt_contraseña.Text) == true ||
             String.IsNullOrEmpty(txt_usuario.Text) == true ||
             String.IsNullOrEmpty(txt_direccion.Text) == true ||
-            String.IsNullOrEmpty(txt_numDoc.Text) == true )
+            String.IsNullOrEmpty(txt_numDoc.Text) == true)
             {
                 MessageBox.Show("Faltan campos por completar");
                 return false;

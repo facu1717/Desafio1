@@ -8,6 +8,11 @@ C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\obj\Debu
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\bin\Debug\Entities.dll
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\bin\Debug\Entities.pdb
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 E:\Laburo\desafio1\Desafio\DataAccessLayer\bin\Debug\DataAccessLayer.dll
 E:\Laburo\desafio1\Desafio\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
 E:\Laburo\desafio1\Desafio\DataAccessLayer\bin\Debug\Entities.dll
@@ -17,8 +22,3 @@ E:\Laburo\desafio1\Desafio\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.Core
 E:\Laburo\desafio1\Desafio\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 E:\Laburo\desafio1\Desafio\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 E:\Laburo\desafio1\Desafio\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\bin\Debug\DataAccessLayer.dll
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\bin\Debug\Entities.dll
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\bin\Debug\Entities.pdb
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete

@@ -7,6 +7,13 @@ C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\obj\D
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CoreCompileInputs.cache
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
 C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\Entities.dll
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\Entities.pdb
+C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete
 E:\Laburo\desafio1\Desafio\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
 E:\Laburo\desafio1\Desafio\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
 E:\Laburo\desafio1\Desafio\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
@@ -18,10 +25,3 @@ E:\Laburo\desafio1\Desafio\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.cspro
 E:\Laburo\desafio1\Desafio\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete
 E:\Laburo\desafio1\Desafio\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
 E:\Laburo\desafio1\Desafio\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\Entities.dll
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\bin\Debug\Entities.pdb
-C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete

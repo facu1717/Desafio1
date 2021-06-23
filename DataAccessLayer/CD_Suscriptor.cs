@@ -79,7 +79,7 @@ namespace DataAccessLayer
                 cmd.Parameters["@tipoDoc"].Value = suscriptor.TipoDocumento;
                 cmd.Parameters.Add(new SqlParameter("@dir", SqlDbType.VarChar, 50));
                 cmd.Parameters["@dir"].Value = suscriptor.Direccion;
-                cmd.Parameters.Add(new SqlParameter("@tel", SqlDbType.Int));
+                cmd.Parameters.Add(new SqlParameter("@tel", SqlDbType.BigInt));
                 cmd.Parameters["@tel"].Value = suscriptor.Telefono;
                 cmd.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar, 50));
                 cmd.Parameters["@email"].Value = suscriptor.Email;

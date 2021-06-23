@@ -222,6 +222,15 @@ namespace Desafio
         protected global::System.Web.UI.WebControls.TextBox txt_oculto;
 
         /// <summary>
+        /// Control txt_modificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_modificar;
+
+        /// <summary>
         /// Control btn_aceptar.
         /// </summary>
         /// <remarks>

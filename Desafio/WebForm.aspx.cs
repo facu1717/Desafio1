@@ -18,10 +18,12 @@ namespace Desafio
         Suscriptor suscriptor = new Suscriptor();
         Suscripcion sus = new Suscripcion();
         bool vigente = false;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             solo_read();
             txt_oculto.Visible = false;
+            txt_modificar.Visible = false;
             if (!IsPostBack)
             {
 
@@ -85,22 +87,55 @@ namespace Desafio
 
         protected void btn_aceptar_Click(object sender, EventArgs e)
         {
-            if (Estavigente() == false)
+            if(String.IsNullOrEmpty(txt_modificar.Text) == true)
             {
-                Suscripcion suscripcion = new Suscripcion();
-                DateTime fechaActual = DateTime.Now;
-                suscriptor.IdSuscriptor = int.Parse(txt_oculto.Text);
-                suscripcion.IdSuscriptor = suscriptor.IdSuscriptor;
-                suscripcion.FechaAlta = fechaActual;
-                ng_Suscripcion.Registrar_Suscripcion(suscripcion);
-                MessageBox.Show("¡Se registro la suscripción correctamente!");
-                Response.Redirect("WebForm.aspx");
+                if (Estavigente() == false)
+                {
+                    Suscripcion suscripcion = new Suscripcion();
+                    DateTime fechaActual = DateTime.Now;
+                    suscriptor.IdSuscriptor = int.Parse(txt_oculto.Text);
+                    suscripcion.IdSuscriptor = suscriptor.IdSuscriptor;
+                    suscripcion.FechaAlta = fechaActual;
+                    ng_Suscripcion.Registrar_Suscripcion(suscripcion);
+                    MessageBox.Show("¡Se registro la suscripción correctamente!");
+                    Response.Redirect("WebForm.aspx");
+                }
+                else
+                {
+                    MessageBox.Show("No puede registrar una nueva suscripción, debido a que ya tiene una vigente");
+                    Response.Redirect("WebForm.aspx");
+                }
             }
             else
             {
-                MessageBox.Show("No puede registrar una nueva suscripción, debido a que ya tiene una vigente");
-                Response.Redirect("WebForm.aspx");
+                bool Resultado;
+                Suscriptor suscriptor = new Suscriptor();
+                Resultado = validarDatos(suscriptor);
+
+                if (Resultado == true)
+                {
+                    suscriptor.Nombre = txt_nombre.Text;
+                    suscriptor.Apellido = txt_apellido.Text;
+                    suscriptor.Direccion = txt_direccion.Text;
+                    suscriptor.Email = txt_email.Text;
+                    suscriptor.NombreUsuario = txt_usuario.Text;
+                    suscriptor.Password = txt_contraseña.Text;
+                    suscriptor.Telefono = Convert.ToInt64(txt_telefono.Text);
+                    suscriptor.NumeroDocumento = Convert.ToInt32(txt_numDoc.Text);
+                    suscriptor.TipoDocumento = Convert.ToInt32(ComboBox.SelectedValue);
+
+                    ng_Suscriptor.Actualizar_Suscriptor(suscriptor);
+                    MessageBox.Show("Se ha modificado correctamente el suscriptor");
+                    Response.Redirect("WebForm.aspx");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo modificar el suscriptor");
+                    Response.Redirect("WebForm.aspx");
+                }
+                
             }
+            
 
         }
         private bool Estavigente()
@@ -148,5 +183,51 @@ namespace Desafio
             txt_usuario.ReadOnly = true;
         }
 
+        private void habilitar_campos()
+        {
+            txt_apellido.ReadOnly = false;
+            txt_nombre.ReadOnly = false;
+            txt_telefono.ReadOnly = false;
+            txt_contraseña.ReadOnly = false;
+            txt_email.ReadOnly = false;
+            txt_direccion.ReadOnly = false;
+            txt_usuario.ReadOnly = false;
+        }
+        protected void btn_modificar_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txt_numDoc.Text) == false)
+            {
+                habilitar_campos();
+                f_modificar();
+            }
+            else
+            {
+                MessageBox.Show("Debe buscar el suscriptor antes de poder modificar");
+            }
+            
+        }
+        private bool validarDatos(Suscriptor suscriptor)
+        {
+            if (String.IsNullOrEmpty(txt_nombre.Text) == true ||
+            String.IsNullOrEmpty(txt_apellido.Text) == true ||
+            String.IsNullOrEmpty(txt_telefono.Text) == true ||
+            String.IsNullOrEmpty(txt_email.Text) == true ||
+            String.IsNullOrEmpty(txt_contraseña.Text) == true ||
+            String.IsNullOrEmpty(txt_usuario.Text) == true ||
+            String.IsNullOrEmpty(txt_direccion.Text) == true ||
+            String.IsNullOrEmpty(txt_numDoc.Text) == true)
+            {
+                MessageBox.Show("Faltan campos por completar");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private void f_modificar()
+        {
+            txt_modificar.Text = "modificar";
+        }
     }
 }

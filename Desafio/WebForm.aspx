@@ -66,7 +66,7 @@
                     <asp:TextBox class ="readOnly" ID="txt_email" runat="server" Height="19px" Width="133px"></asp:TextBox>
                 </div>
                 <div class="col">
-                    <asp:Button ID="btn_modificar" runat="server" Text="Modificar" />
+                    <asp:Button ID="btn_modificar" runat="server" Text="Modificar" OnClick="btn_modificar_Click" />
                 </div>
             </div>
             <div class="row align-items-end">
@@ -85,6 +85,7 @@
                     <asp:Label ID="Label9" runat="server" Text="Label">Contraseña</asp:Label><br />
                     <asp:TextBox class ="readOnly" ID="txt_contraseña" runat="server" Height="19px" Width="133px" type ="password"></asp:TextBox>
                     <asp:TextBox ID="txt_oculto" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txt_modificar" runat="server"></asp:TextBox>
                 </div>
                 <div class="col">
                 </div>
