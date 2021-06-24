@@ -13,13 +13,18 @@
         #btn_cancelar {background-color: white}
         #btn_nuevo {background-color: #add9e6; color:white}
         #btn_modificar {background-color: #6c878f; color:white}
+        body {
+            background-image: url('https://image.freepik.com/foto-gratis/fondo-gris-claro-liso-liso_8087-1195.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css"/>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     
 </head>
-<body>
+<body >
     <form id="form1" runat="server">
         <div class="container">
             
@@ -91,7 +96,8 @@
                 </div>
                 <div class="col">
                     <asp:Label ID="lbl" runat="server" Text="Label">Contraseña desencriptada</asp:Label>
-                    <asp:TextBox ID="txt_desencriptada" runat="server"></asp:TextBox>
+                    <br />
+                    <asp:TextBox ID="txt_desencriptada" runat="server" Height="30px" Width="140px"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="btn_desencriptar" runat="server" Text="Desencriptar" OnClick="btn_desencriptar_Click" />
                 </div>
                 <div>

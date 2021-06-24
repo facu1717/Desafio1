@@ -50,14 +50,21 @@ namespace Desafio
 
         protected void btn_aceptar_Click(object sender, EventArgs e)
         {
+           
             bool Resultado;
             Suscriptor suscriptor = new Suscriptor();
             Suscriptor suscriptor1 = new Suscriptor();
             Resultado = validarDatos(suscriptor);
             suscriptor.NumeroDocumento = Convert.ToInt32(txt_numDoc.Text);
             suscriptor.TipoDocumento = Convert.ToInt32(ComboBox.SelectedValue);
-            suscriptor1 = 
-            if()
+            suscriptor1 = ng_Suscriptor.Buscar_Suscriptor(suscriptor.TipoDocumento, suscriptor.NumeroDocumento);
+
+            validarDoc();
+
+            if (suscriptor1.Nombre != null)
+            {
+                MessageBox.Show("Ya existe un suscriptor con el mismo numero de documento", "info");
+            }
 
             if (Resultado == true)
             {
@@ -81,10 +88,6 @@ namespace Desafio
                 return;
             }
 
-        }
-        private Suscriptor Comparar()
-        {
-            ng_Suscriptor.Buscar_Suscriptor()
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
@@ -188,5 +191,18 @@ namespace Desafio
             MessageBox.Show("Debe crear un nuevo suscriptor, complete todos los campos", "info");
             return;
         }
+
+        private void validarDoc()
+        {
+            int digitos = (int)Math.Floor(Math.Log10(int.Parse(txt_numDoc.Text)) + 1);
+            if (digitos != 8)
+            {
+                MessageBox.Show("Cantidad de dígitos del numero de documento no válida", "error");
+                return;
+
+            }
+           
+        }
     }
+
 }

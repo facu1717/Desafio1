@@ -36,13 +36,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-
-        function Redireccionar {
-            window.location.href = 'WebForm.aspx';
-        }
-
-    </script>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -61,7 +55,8 @@
                 </div>
                 <div class="col">
                     <asp:Label ID="Label2" runat="server" Text="Label">Numero Documento</asp:Label><br />
-                    <asp:TextBox type="number" ID="txt_numDoc" runat="server" Height="30px" Width="140px"></asp:TextBox>
+                    <asp:TextBox type="number" ID="txt_numDoc" runat="server" Height="30px" Width="140px" required ="number"></asp:TextBox>
+                    
                 </div>
                 <div class="col">
                     <asp:Button ID="btn_buscar" runat="server" Text="Buscar" OnClick="btnBtnBuscar" />
@@ -77,7 +72,7 @@
                 </div>
                 <div class="col">
                     <asp:Label ID="Label4" runat="server" Text="Label">Apellido</asp:Label><br />
-                    <asp:TextBox ID="txt_apellido" runat="server" Height="30px" Width="140px"></asp:TextBox>
+                    <asp:TextBox ID="txt_apellido" runat="server" Height="30px" Width="140px" ></asp:TextBox>
                 </div>
                 <div class="col">
                     <asp:Button ID="btn_nuevo" runat="server" Text="Nuevo" />
@@ -86,11 +81,11 @@
             <div class="row align-items-end">
                 <div class="col">
                     <asp:Label ID="Label5" runat="server" Text="Label">Dirección</asp:Label><br />
-                    <asp:TextBox ID="txt_direccion" runat="server" Height="30px" Width="140px"></asp:TextBox>
+                    <asp:TextBox ID="txt_direccion" runat="server" Height="30px" Width="140px"> </asp:TextBox>
                 </div>
                 <div class="col">
                     <asp:Label ID="Label6" runat="server" Text="Label">Email</asp:Label><br />
-                    <asp:TextBox ID="txt_email" runat="server" Height="30px" Width="140px"></asp:TextBox>
+                    <asp:TextBox ID="txt_email" runat="server" Height="30px" Width="140px" ></asp:TextBox>
                 </div>
                 <div class="col">
                     <asp:Button ID="btn_modificar" runat="server" Text="Modificar" OnClick="btn_modificar_Click" />
@@ -99,26 +94,26 @@
             <div class="row align-items-end">
                 <div class="col">
                     <asp:Label ID="Label7" runat="server" Text="Label">Telefono</asp:Label><br />
-                    <asp:TextBox ID="txt_telefono" runat="server" Height="30px" Width="140px"></asp:TextBox>
+                    <asp:TextBox type="number" ID="txt_telefono" runat="server" Height="30px" Width="140px" ></asp:TextBox>
                 </div>
             </div>
             <hr />
             <div class="row align-items-end">
                 <div class="col">
                     <asp:Label ID="Label8" runat="server" Text="Label">Nombre de Usuario</asp:Label><br />
-                    <asp:TextBox ID="txt_usuario" runat="server" Height="30px" Width="140px"></asp:TextBox>
+                    <asp:TextBox ID="txt_usuario" runat="server" Height="30px" Width="140px" ></asp:TextBox>
                 </div>
                 <div class="col">
                     <asp:Label ID="Label9" runat="server" Text="Label">Contraseña</asp:Label><br />
-                    <asp:TextBox ID="txt_contraseña" runat="server" Height="30px" Width="140px" type="password"></asp:TextBox>
+                    <asp:TextBox ID="txt_contraseña" runat="server" Height="30px" Width="140px" type ="password"></asp:TextBox>
                     <asp:TextBox ID="txt_oculto" runat="server"></asp:TextBox>
                 </div>
                 <div class="col">
                 </div>
                 <div>
                     <hr />
-                    <asp:Button ID="btn_aceptar" runat="server" Text="Aceptar" OnClick="btn_aceptar_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" OnClick="btn_cancelar_Click" />
+                    <asp:Button ID="btn_aceptar" runat="server" Text="Aceptar" OnClick="btn_aceptar_Click"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" OnClick="btn_cancelar_Click"/>
 
                 </div>
             </div>

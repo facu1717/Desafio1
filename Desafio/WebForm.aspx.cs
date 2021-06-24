@@ -55,7 +55,6 @@ namespace Desafio
                 lbl.Visible = true;
                 btn_modificar.Visible = true;
                 CargarCampos();
-
             }
 
         }
@@ -64,6 +63,7 @@ namespace Desafio
         {
             try
             {
+                Suscriptor suscriptor = buscar();
                 txt_oculto.Text = suscriptor.IdSuscriptor.ToString();
                 txt_nombre.Text = suscriptor.Nombre.ToString();
                 txt_apellido.Text = suscriptor.Apellido.ToString();
@@ -86,9 +86,26 @@ namespace Desafio
 
         protected void btn_aceptar_Click(object sender, EventArgs e)
         {
-
+            Suscriptor suscriptor1 = buscar();
             if (String.IsNullOrEmpty(txt_modificar.Text) == true)
             {
+                if (txt_numDoc.Text == "")
+                {
+                    MessageBox.Show("Ingrese tipo y numero de documento","info");
+                    return;
+                }
+                long digitos = (long)Math.Floor(Math.Log10(long.Parse(txt_numDoc.Text)) + 1);
+                if (digitos != 8)
+                {
+                    MessageBox.Show("Cantidad de dígitos del numero de documento no válida", "error");
+                    return;
+
+                }
+                if(suscriptor1.Nombre == null)
+                {
+                    MessageBox.Show("No existe un suscriptor con estos datos","info");
+                    return;
+                }
                 if (Estavigente() == false)
                 {
 
@@ -141,10 +158,12 @@ namespace Desafio
         {
             try
             {
+
+                Suscriptor suscriptor = buscar();
                 Suscriptor suscriptorNuevo = new Suscriptor();
                 Suscripcion suscripcion = new Suscripcion();
                 DateTime fechaActual = DateTime.Now;
-                suscriptorNuevo.IdSuscriptor = int.Parse(txt_oculto.Text);
+                suscriptorNuevo.IdSuscriptor = int.Parse(suscriptor.IdSuscriptor.ToString());
                 suscripcion.IdSuscriptor = suscriptorNuevo.IdSuscriptor;
                 suscripcion.FechaAlta = fechaActual;
                 ng_Suscripcion.Registrar_Suscripcion(suscripcion);
@@ -170,29 +189,45 @@ namespace Desafio
         }
         private Suscriptor buscar()
         {
-            int digitos = (int)Math.Floor(Math.Log10(int.Parse(txt_numDoc.Text)) + 1);
-
-            if(digitos != 8)
+            try
             {
-                MessageBox.Show("Cantidad de dígitos del numero de documento no válida", "error");
+                if (txt_numDoc.Text == "")
+                {
+                    MessageBox.Show("Ingrese tipo y numero de documento", "info");
+                    return null;
+                }
+
+                long digitos = (long)Math.Floor(Math.Log10(long.Parse(txt_numDoc.Text)) + 1);
+
+                if (digitos != 8)
+                {
+                    MessageBox.Show("Cantidad de dígitos del numero de documento no válida", "error");
+                    return null;
+                }
+
+                if (String.IsNullOrEmpty(txt_numDoc.Text) == false)
+                {
+                    txt_numDoc.Enabled = true;
+                    ComboBox.Enabled = true;
+                    int TipoDocumento = Convert.ToInt32(ComboBox.SelectedItem.Value);
+                    long NumeroDocumento = long.Parse(txt_numDoc.Text);
+
+                    suscriptor = ng_Suscriptor.Buscar_Suscriptor(TipoDocumento, NumeroDocumento);
+                    return suscriptor;
+                }
+                else
+                {
+                    MessageBox.Show("Coloque su numero de documento", "info");
+                    return null;
+                }
+
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Ocurrio algo", "error");
                 return null;
             }
-
-            if (String.IsNullOrEmpty(txt_numDoc.Text) == false)
-            {
-                txt_numDoc.Enabled = true;
-                ComboBox.Enabled = true;
-                int TipoDocumento = Convert.ToInt32(ComboBox.SelectedItem.Value);
-                long NumeroDocumento = long.Parse(txt_numDoc.Text);
-
-                suscriptor = ng_Suscriptor.Buscar_Suscriptor(TipoDocumento, NumeroDocumento);
-                return suscriptor;
-            }
-            else
-            {
-                MessageBox.Show("Coloque su numero de documento", "info");
-                return null;
-            }
+            
 
         }
 
@@ -346,6 +381,8 @@ namespace Desafio
 
         protected void btn_desencriptar_Click(object sender, EventArgs e)
         {
+            
+
             if (validarDatos() == true)
             {
                 Suscriptor suscriptor = buscar();
@@ -362,6 +399,17 @@ namespace Desafio
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("WebForm.aspx");
+        }
+        private void validarDoc()
+        {
+            int digitos = (int)Math.Floor(Math.Log10(int.Parse(txt_numDoc.Text)) + 1);
+            if (digitos != 8)
+            {
+                MessageBox.Show("Cantidad de dígitos del numero de documento no válida", "error");
+                return;
+
+            }
+
         }
     }
 
