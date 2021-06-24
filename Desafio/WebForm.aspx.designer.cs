@@ -231,6 +231,33 @@ namespace Desafio
         protected global::System.Web.UI.WebControls.TextBox txt_modificar;
 
         /// <summary>
+        /// Control lbl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl;
+
+        /// <summary>
+        /// Control txt_desencriptada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_desencriptada;
+
+        /// <summary>
+        /// Control btn_desencriptar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_desencriptar;
+
+        /// <summary>
         /// Control btn_aceptar.
         /// </summary>
         /// <remarks>

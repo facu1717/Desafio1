@@ -18,9 +18,10 @@ namespace Desafio
         NG_Suscripcion ng_Suscripcion = new NG_Suscripcion();
         Suscriptor suscriptor = new Suscriptor();
         Suscripcion sus = new Suscripcion();
-        string stKey = "jekabc%*.";
+        string stKey = "ABCabc123";
         protected void Page_Load(object sender, EventArgs e)
         {
+            btn_modificar.Visible = false;
             txt_oculto.Visible = false;
             if (!IsPostBack)
             {
@@ -42,7 +43,8 @@ namespace Desafio
 
         protected void btnBtnBuscar(object sender, EventArgs e)
         {
-            MessageBox.Show("Debe crear un nuevo suscriptor, complete todos los campos");
+            Redireccionar();
+            MessageBox.Show("Debe crear un nuevo suscriptor, complete todos los campos", "info");
             return;
         }
 
@@ -50,7 +52,12 @@ namespace Desafio
         {
             bool Resultado;
             Suscriptor suscriptor = new Suscriptor();
+            Suscriptor suscriptor1 = new Suscriptor();
             Resultado = validarDatos(suscriptor);
+            suscriptor.NumeroDocumento = Convert.ToInt32(txt_numDoc.Text);
+            suscriptor.TipoDocumento = Convert.ToInt32(ComboBox.SelectedValue);
+            suscriptor1 = 
+            if()
 
             if (Resultado == true)
             {
@@ -64,23 +71,25 @@ namespace Desafio
                 suscriptor.NumeroDocumento = Convert.ToInt32(txt_numDoc.Text);
                 suscriptor.TipoDocumento = Convert.ToInt32(ComboBox.SelectedValue);
 
-                //suscriptor.Password = EncriptarPassword(suscriptor.Password, stKey);
+                suscriptor.Password = EncriptarPassword(suscriptor.Password, stKey);
 
                 ng_Suscriptor.Nuevo_Suscriptor(suscriptor);
-                MessageBox.Show("Se ha creado un nuevo suscriptor","success");
-                
-
+                MessageBox.Show("Se ha creado un nuevo suscriptor", "success");
             }
             else
             {
                 return;
             }
-            
+
+        }
+        private Suscriptor Comparar()
+        {
+            ng_Suscriptor.Buscar_Suscriptor()
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("WebForm.aspx");
         }
 
         private bool validarDatos(Suscriptor suscriptor)
@@ -102,7 +111,7 @@ namespace Desafio
                 return true;
             }
         }
-       
+
         public static string DesencriptarPassword(string Password, string stKey)
         {
 
@@ -156,7 +165,7 @@ namespace Desafio
                 des.Mode = CipherMode.ECB;
 
                 buff = ASCIIEncoding.ASCII.GetBytes(Password);
-                stringEncripted = Convert.ToBase64String(des.CreateDecryptor().TransformFinalBlock(buff, 0, buff.Length));
+                stringEncripted = Convert.ToBase64String(des.CreateEncryptor().TransformFinalBlock(buff, 0, buff.Length));
 
 
                 return stringEncripted;
@@ -166,6 +175,18 @@ namespace Desafio
             {
                 throw exception;
             }
+        }
+
+        private void Redireccionar()
+        {
+            string script = @"window.location.href='WebForm.aspx';";
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "Redireccionar", script, true);
+        }
+
+        protected void btn_modificar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Debe crear un nuevo suscriptor, complete todos los campos", "info");
+            return;
         }
     }
 }

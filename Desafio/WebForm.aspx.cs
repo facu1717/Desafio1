@@ -19,12 +19,13 @@ namespace Desafio
         Suscriptor suscriptor = new Suscriptor();
         Suscripcion sus = new Suscripcion();
         bool vigente = false;
-        string stKey = "ABCabc123*-";
+        string stKey = "ABCabc123";
         protected void Page_Load(object sender, EventArgs e)
         {
             solo_read();
             txt_oculto.Visible = false;
             txt_modificar.Visible = false;
+            btn_modificar.Visible = false;
 
             if (!IsPostBack)
             {
@@ -49,6 +50,10 @@ namespace Desafio
 
             if (buscar() != null)
             {
+                txt_desencriptada.Visible = true;
+                btn_desencriptar.Visible = true;
+                lbl.Visible = true;
+                btn_modificar.Visible = true;
                 CargarCampos();
 
             }
@@ -66,26 +71,17 @@ namespace Desafio
                 txt_email.Text = suscriptor.Email.ToString();
                 txt_telefono.Text = suscriptor.Telefono.ToString();
                 txt_usuario.Text = suscriptor.NombreUsuario.ToString();
-                txt_contraseña.Text = suscriptor.Password.ToString();
+                txt_contraseña.Text = DesencriptarPassword(suscriptor.Password, stKey);
 
             }
             catch
             {
                 MessageBox.Show("No se encontro el suscriptor");
+                btn_modificar.Visible = false;
+
             }
 
 
-        }
-
-        private void LimpiarCampos()
-        {
-            txt_nombre.Text = "";
-            txt_apellido.Text = "";
-            txt_direccion.Text = "";
-            txt_email.Text = "";
-            txt_telefono.Text = "";
-            txt_usuario.Text = "";
-            txt_contraseña.Text = "";
         }
 
         protected void btn_aceptar_Click(object sender, EventArgs e)
@@ -96,13 +92,13 @@ namespace Desafio
                 if (Estavigente() == false)
                 {
 
-                    MessageBox.ShowConfirmation("Estas seguro que desea registrar una nueva suscripcion?", "Atencion", "Aceptar", "Cancelar", "$('#" + btn_confirmar_guardado.ClientID +"').click();");
-                    
+                    MessageBox.ShowConfirmation("Estas seguro que desea registrar una nueva suscripcion?", "Atencion", "Aceptar", "Cancelar", "$('#" + btn_confirmar_guardado.ClientID + "').click();");
+
                 }
                 else
                 {
-                    MessageBox.Show("No puede registrar una nueva suscripción, debido a que ya tiene una vigente");
-                    
+                    MessageBox.Show("No puede registrar una nueva suscripción, debido a que ya tiene una vigente", "error");
+
                 }
             }
             else
@@ -123,23 +119,44 @@ namespace Desafio
                     suscriptor.NumeroDocumento = Convert.ToInt32(txt_numDoc.Text);
                     suscriptor.TipoDocumento = Convert.ToInt32(ComboBox.SelectedValue);
 
-                    suscriptor.Password = EncriptarPassword(suscriptor.Password,stKey);
+                    suscriptor.Password = EncriptarPassword(suscriptor.Password, stKey);
 
                     ng_Suscriptor.Actualizar_Suscriptor(suscriptor);
-                    MessageBox.Show("Se ha modificado correctamente el suscriptor");
-                    Response.Redirect("WebForm.aspx");
+                    MessageBox.Show("Se ha modificado correctamente el suscriptor", "success");
+                    LimpiarCampos();
+                    txt_numDoc.Enabled = true;
+                    ComboBox.Enabled = true;
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo modificar el suscriptor");
-                    Response.Redirect("WebForm.aspx");
+                    MessageBox.Show("No se pudo modificar el suscriptor", "error");
+
                 }
 
             }
 
 
         }
-        
+        protected void btn_confirmar_guardado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Suscriptor suscriptorNuevo = new Suscriptor();
+                Suscripcion suscripcion = new Suscripcion();
+                DateTime fechaActual = DateTime.Now;
+                suscriptorNuevo.IdSuscriptor = int.Parse(txt_oculto.Text);
+                suscripcion.IdSuscriptor = suscriptorNuevo.IdSuscriptor;
+                suscripcion.FechaAlta = fechaActual;
+                ng_Suscripcion.Registrar_Suscripcion(suscripcion);
+                MessageBox.Show("¡Se registro la suscripción correctamente!", "success", "Bien hecho");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", "Ocurrio un error");
+
+            }
+        }
         private bool Estavigente()
         {
             Suscriptor suscriptor = buscar();
@@ -153,8 +170,18 @@ namespace Desafio
         }
         private Suscriptor buscar()
         {
+            int digitos = (int)Math.Floor(Math.Log10(int.Parse(txt_numDoc.Text)) + 1);
+
+            if(digitos != 8)
+            {
+                MessageBox.Show("Cantidad de dígitos del numero de documento no válida", "error");
+                return null;
+            }
+
             if (String.IsNullOrEmpty(txt_numDoc.Text) == false)
             {
+                txt_numDoc.Enabled = true;
+                ComboBox.Enabled = true;
                 int TipoDocumento = Convert.ToInt32(ComboBox.SelectedItem.Value);
                 long NumeroDocumento = long.Parse(txt_numDoc.Text);
 
@@ -163,7 +190,7 @@ namespace Desafio
             }
             else
             {
-                MessageBox.Show("Coloque su numero de documento");
+                MessageBox.Show("Coloque su numero de documento", "info");
                 return null;
             }
 
@@ -171,9 +198,23 @@ namespace Desafio
 
         protected void btn_nuevo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Nuevo.aspx");
+
+            string script = @"window.location.href='Nuevo.aspx';";
+
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "Redireccionar", script, true);
         }
 
+        private void LimpiarCampos()
+        {
+            txt_apellido.Text = "";
+            txt_nombre.Text = "";
+            txt_telefono.Text = "";
+            txt_contraseña.Text = "";
+            txt_email.Text = "";
+            txt_direccion.Text = "";
+            txt_usuario.Text = "";
+
+        }
         private void solo_read()
         {
             txt_apellido.Enabled = false;
@@ -183,10 +224,12 @@ namespace Desafio
             txt_email.Enabled = false;
             txt_direccion.Enabled = false;
             txt_usuario.Enabled = false;
+            txt_desencriptada.Enabled = false;
         }
 
         private void habilitar_campos()
         {
+
             txt_apellido.Enabled = true;
             txt_nombre.Enabled = true;
             txt_telefono.Enabled = true;
@@ -199,12 +242,17 @@ namespace Desafio
         {
             if (String.IsNullOrEmpty(txt_numDoc.Text) == false)
             {
+                txt_desencriptada.Visible = false;
+                btn_desencriptar.Visible = false;
+                lbl.Visible = false;
+                txt_numDoc.Enabled = false;
+                ComboBox.Enabled = false;
                 habilitar_campos();
                 f_modificar();
             }
             else
             {
-                MessageBox.Show("Debe buscar el suscriptor antes de poder modificar");
+                MessageBox.Show("Debe buscar el suscriptor antes de poder modificar", "info");
             }
 
         }
@@ -219,7 +267,7 @@ namespace Desafio
             String.IsNullOrEmpty(txt_direccion.Text) == true ||
             String.IsNullOrEmpty(txt_numDoc.Text) == true)
             {
-                MessageBox.Show("Faltan campos por completar");
+                MessageBox.Show("Faltan campos por completar", "error");
                 return false;
             }
             else
@@ -234,8 +282,6 @@ namespace Desafio
 
         public static string DesencriptarPassword(string Password, string stKey)
         {
-            
-
             try
             {
                 TripleDESCryptoServiceProvider des;
@@ -260,7 +306,7 @@ namespace Desafio
                 return stringDecripted;
 
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 throw exception;
             }
@@ -268,8 +314,6 @@ namespace Desafio
 
         public static string EncriptarPassword(string Password, string stKey)
         {
-            
-
             try
             {
                 TripleDESCryptoServiceProvider des;
@@ -288,7 +332,7 @@ namespace Desafio
                 des.Mode = CipherMode.ECB;
 
                 buff = ASCIIEncoding.ASCII.GetBytes(Password);
-                stringEncripted = Convert.ToBase64String(des.CreateDecryptor().TransformFinalBlock(buff, 0, buff.Length));
+                stringEncripted = Convert.ToBase64String(des.CreateEncryptor().TransformFinalBlock(buff, 0, buff.Length));
 
 
                 return stringEncripted;
@@ -300,25 +344,24 @@ namespace Desafio
             }
         }
 
-        protected void btn_confirmar_guardado_Click(object sender, EventArgs e)
+        protected void btn_desencriptar_Click(object sender, EventArgs e)
         {
-            try
+            if (validarDatos() == true)
             {
-                Suscriptor suscriptorNuevo = new Suscriptor();
-                Suscripcion suscripcion = new Suscripcion();
-                DateTime fechaActual = DateTime.Now;
-                suscriptorNuevo.IdSuscriptor = int.Parse(txt_oculto.Text);
-                suscripcion.IdSuscriptor = suscriptorNuevo.IdSuscriptor;
-                suscripcion.FechaAlta = fechaActual;
-                ng_Suscripcion.Registrar_Suscripcion(suscripcion);
-                MessageBox.Show("¡Se registro la suscripción correctamente!", "success", "Bien hecho");
-                
+                Suscriptor suscriptor = buscar();
+                txt_desencriptada.Text = DesencriptarPassword(suscriptor.Password, stKey);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "error", "Ocurrio un error");
+                MessageBox.Show("Debe buscar un suscriptor para poder desencriptar", "error");
+            }
 
-            }
+
+        }
+
+        protected void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("WebForm.aspx");
         }
     }
 
