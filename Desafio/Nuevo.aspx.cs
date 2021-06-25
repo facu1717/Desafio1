@@ -15,9 +15,7 @@ namespace Desafio
     public partial class Nuevo : System.Web.UI.Page
     {
         NG_Suscriptor ng_Suscriptor = new NG_Suscriptor();
-        NG_Suscripcion ng_Suscripcion = new NG_Suscripcion();
-        Suscriptor suscriptor = new Suscriptor();
-        Suscripcion sus = new Suscripcion();
+        
         string stKey = "ABCabc123";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -115,7 +113,7 @@ namespace Desafio
             String.IsNullOrEmpty(txt_direccion.Text) == true ||
             String.IsNullOrEmpty(txt_numDoc.Text) == true)
             {
-                MessageBox.Show("Faltan campos por completar");
+                MessageBox.Show("Por favor, complete los campos restantes","info", "Todos los campos son obligatorios");
                 return false;
             }
             else

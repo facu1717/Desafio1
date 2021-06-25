@@ -50,6 +50,7 @@ namespace Desafio
 
             if (buscar() != null)
             {
+                
                 txt_desencriptada.Visible = true;
                 btn_desencriptar.Visible = true;
                 lbl.Visible = true;
@@ -72,7 +73,7 @@ namespace Desafio
                 txt_telefono.Text = suscriptor.Telefono.ToString();
                 txt_usuario.Text = suscriptor.NombreUsuario.ToString();
                 txt_contraseña.Text = DesencriptarPassword(suscriptor.Password, stKey);
-
+                txt_desencriptada.Text = "";
             }
             catch
             {
@@ -147,8 +148,8 @@ namespace Desafio
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo modificar el suscriptor", "error");
-
+                    MessageBox.Show("No se completaron todos los campos", "error");
+                   
                 }
 
             }
@@ -303,7 +304,7 @@ namespace Desafio
             String.IsNullOrEmpty(txt_direccion.Text) == true ||
             String.IsNullOrEmpty(txt_numDoc.Text) == true)
             {
-                MessageBox.Show("Faltan campos por completar", "error");
+                MessageBox.Show("Faltan campos por completar", "info");
                 return false;
             }
             else
@@ -401,17 +402,7 @@ namespace Desafio
         {
             Response.Redirect("WebForm.aspx");
         }
-        private void validarDoc()
-        {
-            int digitos = (int)Math.Floor(Math.Log10(int.Parse(txt_numDoc.Text)) + 1);
-            if (digitos != 8)
-            {
-                MessageBox.Show("Cantidad de dígitos del numero de documento no válida", "error");
-                return;
-
-            }
-
-        }
+        
     }
 
 }

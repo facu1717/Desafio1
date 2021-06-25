@@ -32,6 +32,11 @@
             background-color: #6c878f;
             color: white
         }
+        body {
+            background-image: url('http://www.colores.org.es/imagenes_colores/cian-claro.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
