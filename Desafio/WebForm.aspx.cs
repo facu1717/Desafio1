@@ -104,6 +104,7 @@ namespace Desafio
                 if(suscriptor1.Nombre == null)
                 {
                     MessageBox.Show("No existe un suscriptor con estos datos","info");
+                    LimpiarCampos();
                     return;
                 }
                 if (Estavigente() == false)

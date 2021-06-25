@@ -44,10 +44,10 @@
 
             <h1><a href="https://localhost:44342/WebForm.aspx">Suscripción</a></h1>
             <br />
-            <h2>Para realizar la suscripción, complete los siguientes datos:</h2>
+            <h2>Para poder registrarse como suscriptor, complete los siguientes datos:</h2>
             <br />
             <div class="row align-items-start">
-                <h3>Buscar Suscriptor</h3>
+                
                 <br />
                 <div class="col">
                     <asp:Label ID="Label1" runat="server" Text="Label">Tipo Documento</asp:Label><br />
@@ -64,8 +64,7 @@
             </div>
             <hr />
             <div class="row align-items-center">
-                <h3>Datos del Suscriptor</h3>
-                <br />
+                
                 <div class="col">
                     <asp:Label ID="Label3" runat="server" Text="Label">Nombre</asp:Label><br />
                     <asp:TextBox ID="txt_nombre" runat="server" Height="30px" Width="140px"></asp:TextBox>
@@ -114,7 +113,7 @@
                     <hr />
                     <asp:Button ID="btn_aceptar" runat="server" Text="Aceptar" OnClick="btn_aceptar_Click"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" OnClick="btn_cancelar_Click"/>
-
+                    <asp:Button ID="btn_redireccionar" runat="server" Text="Button" style="display:none" OnClick = "btn_redireccionar_Click"/>
                 </div>
             </div>
         </div>

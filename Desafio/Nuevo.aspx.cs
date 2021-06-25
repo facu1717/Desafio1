@@ -23,6 +23,10 @@ namespace Desafio
         {
             btn_modificar.Visible = false;
             txt_oculto.Visible = false;
+            btn_buscar.Visible = false;
+            btn_nuevo.Visible = false;
+            btn_cancelar.Visible = false;
+
             if (!IsPostBack)
             {
 
@@ -81,7 +85,8 @@ namespace Desafio
                 suscriptor.Password = EncriptarPassword(suscriptor.Password, stKey);
 
                 ng_Suscriptor.Nuevo_Suscriptor(suscriptor);
-                MessageBox.Show("Se ha creado un nuevo suscriptor", "success");
+                MessageBox.Show("Se ha creado un nuevo suscriptor", "success","Bien hecho","Aceptar", "$('#" + btn_redireccionar.ClientID + "').click(); ");
+                
             }
             else
             {
@@ -90,9 +95,13 @@ namespace Desafio
 
         }
 
-        protected void btn_cancelar_Click(object sender, EventArgs e)
+        protected void btn_redireccionar_Click(object sender, EventArgs e)
         {
             Response.Redirect("WebForm.aspx");
+        }
+        protected void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private bool validarDatos(Suscriptor suscriptor)
