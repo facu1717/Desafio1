@@ -402,7 +402,11 @@ namespace Desafio
         {
             Response.Redirect("WebForm.aspx");
         }
-        
+
+        protected void btn_tabla_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("tabla1.aspx");
+        }
     }
 
 }

@@ -4,7 +4,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Suscripción</title>
     <style>
@@ -19,9 +18,15 @@
             background-size: cover;
         }
     </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css"/>
+    <link rel="stylesheet" type="text/css" href="C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Desafio\datatables\datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Desafio\datatables\DataTables-1.10.25\css\dataTables.bootstrap5.min.css" />
+    
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="C:\Users\OficialDeSeguridad\Downloads\Desafio1\Desafio1\Desafio\datatables\datatables.min.js"></script>
     
 </head>
 <body >
@@ -103,7 +108,8 @@
                 <div>
                     <hr />
                     <asp:Button ID="btn_aceptar" runat="server" Text="Aceptar" OnClick="btn_aceptar_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" OnClick="btn_cancelar_Click" />
+                    <asp:Button ID="btn_cancelar" runat="server" Text="Cancelar" OnClick="btn_cancelar_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="btn_tabla" runat="server" Text="Ver tabla" OnClick="btn_tabla_Click"  />
                     <asp:Button ID="btn_confirmar_guardado" runat="server" Style="display: none;" OnClick = "btn_confirmar_guardado_Click"/>
                 </div>
             </div>

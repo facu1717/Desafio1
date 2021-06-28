@@ -7,6 +7,7 @@
 <head runat="server">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>Suscripción</title>
     <style>
         #btn_buscar {
@@ -36,6 +37,7 @@
             background-image: url('http://www.colores.org.es/imagenes_colores/cian-claro.jpg');
             background-repeat: no-repeat;
             background-size: cover;
+            
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" />

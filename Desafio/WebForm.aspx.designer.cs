@@ -276,6 +276,15 @@ namespace Desafio
         protected global::System.Web.UI.WebControls.Button btn_cancelar;
 
         /// <summary>
+        /// Control btn_tabla.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_tabla;
+
+        /// <summary>
         /// Control btn_confirmar_guardado.
         /// </summary>
         /// <remarks>
